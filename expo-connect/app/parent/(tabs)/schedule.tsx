@@ -11,6 +11,8 @@ import {
   CampusRadius,
   CampusSpace,
   CampusType,
+  ParentSpace,
+  ParentType,
   cardShadow,
 } from '@/constants/theme';
 
@@ -178,9 +180,9 @@ function ClassCard({
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: CampusColors.background },
-  scroll: { paddingHorizontal: CampusSpace.lg, paddingTop: CampusSpace.lg },
-  pageTitle: { ...CampusType.h1, color: CampusColors.onSurface, marginBottom: 8 },
-  subtitle: { ...CampusType.bodyMd, color: CampusColors.onSurfaceVariant, marginBottom: CampusSpace.lg },
+  scroll: { paddingHorizontal: ParentSpace.md, paddingTop: ParentSpace.md },
+  pageTitle: { ...ParentType.h1, color: CampusColors.onSurface, marginBottom: 6 },
+  subtitle: { ...ParentType.bodyMd, color: CampusColors.onSurfaceVariant, marginBottom: ParentSpace.md },
   subtitleBold: { fontFamily: CampusFonts.bodyBold, color: CampusColors.primary },
   segment: {
     flexDirection: 'row',
@@ -189,24 +191,24 @@ const styles = StyleSheet.create({
     padding: 4,
     borderWidth: 1,
     borderColor: CampusColors.outlineVariant,
-    marginBottom: CampusSpace.lg,
+    marginBottom: ParentSpace.md,
   },
   segmentBtn: { flex: 1, paddingVertical: 10, borderRadius: CampusRadius.sm, alignItems: 'center' },
   segmentBtnActive: { backgroundColor: CampusColors.primary, ...cardShadow },
-  segmentLabel: { ...CampusType.label, color: CampusColors.onSurfaceVariant },
+  segmentLabel: { ...ParentType.label, color: CampusColors.onSurfaceVariant },
   segmentLabelActive: { color: CampusColors.onPrimary },
   currentDay: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.md,
+    padding: ParentSpace.md,
     borderLeftWidth: 4,
     borderLeftColor: CampusColors.primary,
     marginBottom: CampusSpace.md,
     ...cardShadow,
   },
-  currentDayLabel: { ...CampusType.label, color: CampusColors.primary, textTransform: 'uppercase' },
-  currentDayName: { ...CampusType.h2, color: CampusColors.onSurface, marginTop: 4 },
-  currentDayDate: { ...CampusType.caption, color: CampusColors.onSurfaceVariant, marginTop: 2 },
+  currentDayLabel: { ...ParentType.label, color: CampusColors.primary, textTransform: 'uppercase' },
+  currentDayName: { ...ParentType.h2, color: CampusColors.onSurface, marginTop: 4 },
+  currentDayDate: { ...ParentType.caption, color: CampusColors.onSurfaceVariant, marginTop: 2 },
   classCard: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
@@ -228,7 +230,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   nowBadgeText: { ...CampusType.label, color: CampusColors.onPrimary, fontSize: 11 },
-  classInner: { flexDirection: 'row', padding: CampusSpace.lg, gap: CampusSpace.lg, paddingTop: 20 },
+  classInner: { flexDirection: 'row', padding: ParentSpace.md, gap: ParentSpace.md, paddingTop: 16 },
   timeRail: { alignItems: 'center', minWidth: 88, paddingTop: 4 },
   timeRailText: { ...CampusType.label, color: CampusColors.onSurfaceVariant },
   timeLine: { width: 2, height: 40, marginVertical: CampusSpace.xs },
@@ -236,9 +238,9 @@ const styles = StyleSheet.create({
   classHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 },
   subjectPill: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: CampusRadius.full },
   subjectPillText: { ...CampusType.label, fontSize: 11 },
-  classTitle: { ...CampusType.h2, color: CampusColors.onSurface, marginBottom: 8 },
+  classTitle: { ...ParentType.h2, color: CampusColors.onSurface, marginBottom: 6 },
   metaRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 4 },
-  metaText: { ...CampusType.bodyMd, color: CampusColors.onSurfaceVariant },
+  metaText: { ...ParentType.bodyMd, color: CampusColors.onSurfaceVariant },
   lunch: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -253,7 +255,7 @@ const styles = StyleSheet.create({
     marginBottom: CampusSpace.md,
   },
   lunchText: {
-    ...CampusType.label,
+    ...ParentType.label,
     color: CampusColors.secondary,
     letterSpacing: 1.2,
     flex: 1,
@@ -274,7 +276,7 @@ const styles = StyleSheet.create({
     padding: CampusSpace.md,
   },
   mapRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
-  mapCaption: { flex: 1, ...CampusType.bodyMd, color: CampusColors.onPrimary, fontFamily: CampusFonts.bodyMedium },
+  mapCaption: { flex: 1, ...ParentType.bodyMd, color: CampusColors.onPrimary, fontFamily: CampusFonts.bodyMedium },
   mapBtn: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -284,5 +286,5 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: CampusRadius.sm,
   },
-  mapBtnText: { ...CampusType.label, color: CampusColors.primary },
+  mapBtnText: { ...ParentType.label, color: CampusColors.primary },
 });

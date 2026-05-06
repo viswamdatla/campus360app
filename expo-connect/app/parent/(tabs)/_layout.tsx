@@ -24,20 +24,20 @@ export default function TabLayout() {
     <Tabs
       screenOptions={({ route }) => ({
         headerShown,
-        tabBarActiveTintColor: CampusColors.onPrimary,
+        tabBarActiveTintColor: CampusColors.onPrimaryContainer,
         tabBarInactiveTintColor: CampusColors.outline,
         tabBarShowLabel: true,
         tabBarLabelStyle: {
-          fontSize: 11,
+          fontSize: 10,
           fontFamily: CampusFonts.bodySemiBold,
           marginTop: 2,
         },
         tabBarStyle: {
-          backgroundColor: CampusColors.surfaceContainer,
+          backgroundColor: CampusColors.surfaceContainerLowest,
           borderTopColor: CampusColors.outlineVariant,
-          height: Platform.OS === 'ios' ? 88 : 72,
-          paddingTop: 8,
-          paddingBottom: Platform.OS === 'ios' ? 28 : 12,
+          height: Platform.OS === 'ios' ? 82 : 66,
+          paddingTop: 6,
+          paddingBottom: Platform.OS === 'ios' ? 24 : 10,
           paddingHorizontal: 4,
           borderTopLeftRadius: 16,
           borderTopRightRadius: 16,
@@ -63,7 +63,7 @@ export default function TabLayout() {
               style={({ pressed }) => [
                 styles.tabBtn,
                 {
-                  backgroundColor: selected ? CampusColors.primary : 'transparent',
+                  backgroundColor: selected ? CampusColors.primaryContainer : 'transparent',
                   opacity: pressed ? 0.9 : 1,
                 },
               ]}>
@@ -73,7 +73,7 @@ export default function TabLayout() {
         },
         tabBarIcon: ({ color }) => {
           const name = TAB_ICONS[route.name] ?? 'circle';
-          return <MaterialIcons name={name} size={22} color={color} />;
+          return <MaterialIcons name={name} size={20} color={color} />;
         },
       })}>
       <Tabs.Screen name="index" options={{ title: 'Dashboard' }} />
@@ -97,9 +97,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 6,
+    paddingVertical: 4,
     marginHorizontal: 2,
     borderRadius: 12,
-    minHeight: 48,
+    minHeight: 44,
   },
 });

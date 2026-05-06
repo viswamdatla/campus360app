@@ -12,6 +12,8 @@ import {
   CampusRadius,
   CampusSpace,
   CampusType,
+  ParentSpace,
+  ParentType,
   cardShadow,
 } from '@/constants/theme';
 
@@ -205,10 +207,10 @@ function GradeRow({
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: CampusColors.surface },
-  scroll: { paddingHorizontal: CampusSpace.lg, paddingTop: CampusSpace.lg },
+  scroll: { paddingHorizontal: ParentSpace.md, paddingTop: ParentSpace.md },
   hero: { marginBottom: CampusSpace.xl },
-  greet: { ...CampusType.label, color: CampusColors.onSurfaceVariant, marginBottom: 4 },
-  heroTitle: { ...CampusType.h1, color: CampusColors.onSurface, marginBottom: CampusSpace.md },
+  greet: { ...ParentType.label, color: CampusColors.onSurfaceVariant, marginBottom: 4 },
+  heroTitle: { ...ParentType.h1, color: CampusColors.onSurface, marginBottom: ParentSpace.md },
   chip: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -219,12 +221,12 @@ const styles = StyleSheet.create({
     paddingVertical: CampusSpace.sm,
     borderRadius: CampusRadius.md,
   },
-  chipText: { ...CampusType.label, color: CampusColors.primary },
-  metrics: { gap: CampusSpace.gutter, marginBottom: CampusSpace.gutter },
+  chipText: { ...ParentType.label, color: CampusColors.primary },
+  metrics: { gap: ParentSpace.gutter, marginBottom: ParentSpace.gutter },
   metricCard: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.gutter,
+    padding: ParentSpace.md,
     borderLeftWidth: 4,
     ...cardShadow,
   },
@@ -244,9 +246,9 @@ const styles = StyleSheet.create({
     borderRadius: CampusRadius.full,
   },
   badgeRedText: { fontSize: 10, fontFamily: CampusFonts.bodyBold, color: CampusColors.onErrorContainer },
-  metricLabel: { ...CampusType.label, color: CampusColors.onSurfaceVariant },
-  metricValue: { ...CampusType.stat, color: CampusColors.onSurface, marginTop: 4 },
-  metricSuffix: { ...CampusType.bodyMd, fontFamily: CampusFonts.body },
+  metricLabel: { ...ParentType.label, color: CampusColors.onSurfaceVariant },
+  metricValue: { ...ParentType.stat, color: CampusColors.onSurface, marginTop: 4 },
+  metricSuffix: { ...ParentType.bodyMd, fontFamily: CampusFonts.body },
   metricFoot: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: CampusSpace.sm },
   metricFootPrimary: { fontSize: 12, color: CampusColors.primary, fontFamily: CampusFonts.body },
   metricFootMuted: { fontSize: 12, color: CampusColors.onSurfaceVariant, fontFamily: CampusFonts.body },
@@ -255,13 +257,13 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.gutter,
-    marginBottom: CampusSpace.gutter,
+    padding: ParentSpace.md,
+    marginBottom: ParentSpace.gutter,
     ...cardShadow,
   },
-  rowBetween: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: CampusSpace.lg },
-  cardTitle: { ...CampusType.h2, color: CampusColors.onSurface },
-  link: { ...CampusType.label, color: CampusColors.primary },
+  rowBetween: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: ParentSpace.md },
+  cardTitle: { ...ParentType.h2, color: CampusColors.onSurface },
+  link: { ...ParentType.label, color: CampusColors.primary },
   schedRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -281,7 +283,7 @@ const styles = StyleSheet.create({
   timeAmpm: { fontSize: 10, color: CampusColors.onSurfaceVariant, textTransform: 'uppercase' },
   schedBody: { flex: 1 },
   schedTitle: { fontFamily: CampusFonts.bodyBold, fontSize: 15, color: CampusColors.onSurface },
-  schedSub: { ...CampusType.bodyMd, color: CampusColors.onSurfaceVariant, marginTop: 2 },
+  schedSub: { ...ParentType.bodyMd, color: CampusColors.onSurfaceVariant, marginTop: 2 },
   nextPill: {
     backgroundColor: CampusColors.primaryFixed,
     paddingHorizontal: 10,
@@ -292,10 +294,10 @@ const styles = StyleSheet.create({
   gradeRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: CampusSpace.lg,
+    marginBottom: ParentSpace.md,
   },
   gradeName: { fontFamily: CampusFonts.bodyBold, fontSize: 15, color: CampusColors.onSurface },
-  gradeDate: { ...CampusType.caption, color: CampusColors.onSurfaceVariant, marginTop: 2 },
+  gradeDate: { ...ParentType.caption, color: CampusColors.onSurfaceVariant, marginTop: 2 },
   gradeLetter: { fontFamily: CampusFonts.bodyBold, fontSize: 15, color: CampusColors.primary },
   gradeScore: { fontSize: 10, color: CampusColors.onSurfaceVariant, marginTop: 2 },
   outlineBtn: {
@@ -310,7 +312,7 @@ const styles = StyleSheet.create({
   ctaBanner: {
     backgroundColor: CampusColors.primary,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.lg,
+    padding: ParentSpace.md,
     marginBottom: CampusSpace.xl,
     overflow: 'hidden',
   },
@@ -324,8 +326,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   ctaTextCol: { flex: 1 },
-  ctaTitle: { ...CampusType.h2, color: CampusColors.onPrimary },
-  ctaSub: { ...CampusType.bodyMd, color: 'rgba(215, 227, 255, 0.85)', marginTop: 4 },
+  ctaTitle: { ...ParentType.h2, color: CampusColors.onPrimary },
+  ctaSub: { ...ParentType.bodyMd, color: 'rgba(215, 227, 255, 0.85)', marginTop: 4 },
   ctaBtn: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.sm,

@@ -2,7 +2,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Text, View, Linking } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { StudentTopBar } from '@/components/student/StudentTopBar';
@@ -22,7 +22,7 @@ export default function StudentProfileScreen() {
       <StudentTopBar avatarUri={AVATAR} />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={[styles.scroll, { paddingBottom: insets.bottom + 110 }]}>
+        contentContainerStyle={[styles.scroll, { paddingBottom: insets.bottom + 100 }]}>
         <View style={styles.identityCard}>
           <View style={styles.identityRow}>
             <View style={styles.photoWrap}>
@@ -53,11 +53,11 @@ export default function StudentProfileScreen() {
           </View>
 
           <View style={styles.actionsRow}>
-            <Pressable style={styles.primaryBtn}>
+            <Pressable style={styles.primaryBtn} onPress={() => Alert.alert('Edit Profile', 'Edit profile flow coming next.')}>
               <MaterialIcons name="edit" size={18} color={CampusColors.onPrimary} />
               <Text style={styles.primaryBtnText}>Edit Profile</Text>
             </Pressable>
-            <Pressable style={styles.outlineBtn}>
+            <Pressable style={styles.outlineBtn} onPress={() => Alert.alert('Print ID', 'Student ID print queued.')}>
               <MaterialIcons name="print" size={18} color={CampusColors.onSurfaceVariant} />
               <Text style={styles.outlineBtnText}>Print ID</Text>
             </Pressable>
@@ -121,11 +121,11 @@ export default function StudentProfileScreen() {
             <KeyValueRow k="Relation" v="Father" />
             <KeyValueRow k="Occupation" v="Software Engineer" />
             <View style={styles.guardianLinks}>
-              <Pressable style={styles.linkRow}>
+              <Pressable style={styles.linkRow} onPress={() => Linking.openURL('tel:+919880012345')}>
                 <MaterialIcons name="call" size={18} color={CampusColors.primary} />
                 <Text style={styles.linkText}>+91 98800 12345</Text>
               </Pressable>
-              <Pressable style={styles.linkRow}>
+              <Pressable style={styles.linkRow} onPress={() => Linking.openURL('mailto:r.vardhan@email.com')}>
                 <MaterialIcons name="mail" size={18} color={CampusColors.primary} />
                 <Text style={styles.linkText}>r.vardhan@email.com</Text>
               </Pressable>
@@ -228,13 +228,13 @@ function KeyValueRow({ k, v, bold }: { k: string; v: string; bold?: boolean }) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: CampusColors.surface },
-  scroll: { paddingHorizontal: CampusSpace.lg, paddingTop: CampusSpace.lg },
+  scroll: { paddingHorizontal: CampusSpace.md, paddingTop: CampusSpace.md },
   gridGap: { gap: CampusSpace.gutter },
 
   identityCard: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.lg,
+    padding: CampusSpace.md,
     borderWidth: 1,
     borderColor: CampusColors.surfaceContainer,
     shadowColor: '#000',
@@ -243,19 +243,19 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
     elevation: 2,
   },
-  identityRow: { flexDirection: 'row', gap: CampusSpace.lg, alignItems: 'flex-start' },
+  identityRow: { flexDirection: 'row', gap: CampusSpace.md, alignItems: 'flex-start' },
   photoWrap: { position: 'relative' },
-  photo: { width: 96, height: 96, borderRadius: CampusRadius.md, backgroundColor: CampusColors.surfaceContainerHigh, borderWidth: 4, borderColor: CampusColors.surfaceContainer, shadowColor: '#000', shadowOpacity: 0.08, shadowRadius: 10, shadowOffset: { width: 0, height: 2 } },
+  photo: { width: 84, height: 84, borderRadius: CampusRadius.md, backgroundColor: CampusColors.surfaceContainerHigh, borderWidth: 3, borderColor: CampusColors.surfaceContainer, shadowColor: '#000', shadowOpacity: 0.08, shadowRadius: 10, shadowOffset: { width: 0, height: 2 } },
   statusDot: { position: 'absolute', right: -6, bottom: -6, width: 18, height: 18, borderRadius: 9, backgroundColor: '#22c55e', borderWidth: 3, borderColor: CampusColors.surfaceContainerLowest },
   nameRow: { flexDirection: 'row', alignItems: 'flex-end', flexWrap: 'wrap', gap: 10 },
-  name: { ...CampusType.h1, color: CampusColors.onSurface },
+  name: { ...CampusType.h2, color: CampusColors.onSurface, fontFamily: CampusFonts.headingBold },
   activePill: { backgroundColor: CampusColors.primaryContainer, paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999 },
   activeText: { ...CampusType.label, color: CampusColors.onPrimaryContainer },
   meta: { ...CampusType.bodyMd, color: CampusColors.onSurfaceVariant, marginTop: 6 },
   badgeRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 12 },
   badge: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: CampusColors.surfaceContainer, paddingHorizontal: 12, paddingVertical: 10, borderRadius: CampusRadius.sm },
   badgeText: { ...CampusType.label, color: CampusColors.onSurface },
-  actionsRow: { flexDirection: 'row', gap: 12, marginTop: CampusSpace.lg },
+  actionsRow: { flexDirection: 'row', gap: 10, marginTop: CampusSpace.md },
   primaryBtn: { flex: 1, backgroundColor: CampusColors.primary, borderRadius: CampusRadius.sm, paddingVertical: 12, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8 },
   primaryBtnText: { ...CampusType.bodyMd, fontFamily: CampusFonts.bodySemiBold, color: CampusColors.onPrimary },
   outlineBtn: { flex: 1, borderWidth: 1, borderColor: CampusColors.outline, borderRadius: CampusRadius.sm, paddingVertical: 12, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8 },
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   academicKicker: { ...CampusType.label, color: 'rgba(255,255,255,0.85)', letterSpacing: 1 },
-  academicValue: { ...CampusType.stat, color: CampusColors.onPrimary, marginTop: 10 },
+  academicValue: { ...CampusType.h1, color: CampusColors.onPrimary, marginTop: 8, fontFamily: CampusFonts.headingBold },
   academicTrack: { height: 8, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.2)', marginTop: 14, overflow: 'hidden' },
   academicFill: { height: '100%', backgroundColor: '#fff' },
   academicSub: { ...CampusType.caption, color: 'rgba(255,255,255,0.8)', marginTop: 8 },
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
     marginTop: CampusSpace.gutter,
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.lg,
+    padding: CampusSpace.md,
     borderWidth: 1,
     borderColor: CampusColors.surfaceContainer,
     shadowColor: '#000',
@@ -288,7 +288,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   sectionHead: { flexDirection: 'row', alignItems: 'center', gap: 10, borderBottomWidth: 1, borderBottomColor: CampusColors.surfaceVariant, paddingBottom: 10, marginBottom: 14 },
-  h2: { ...CampusType.h2, color: CampusColors.onSurface },
+  h2: { ...CampusType.bodyLg, color: CampusColors.onSurface, fontFamily: CampusFonts.headingBold },
   caption: { ...CampusType.caption, color: CampusColors.onSurfaceVariant, marginBottom: 6 },
   bodyMd: { ...CampusType.bodyMd, color: CampusColors.onSurface },
 

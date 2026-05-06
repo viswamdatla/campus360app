@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { StudentTopBar } from '@/components/student/StudentTopBar';
@@ -13,13 +13,15 @@ const DAYS_TOP = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
 export default function StudentAttendanceScreen() {
   const insets = useSafeAreaInsets();
+  const [monthIndex, setMonthIndex] = React.useState(0);
+  const months = ['October 2023', 'September 2023', 'November 2023'];
 
   return (
     <View style={styles.screen}>
       <StudentTopBar avatarUri={AVATAR} />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={[styles.scroll, { paddingBottom: insets.bottom + 110 }]}>
+        contentContainerStyle={[styles.scroll, { paddingBottom: insets.bottom + 100 }]}>
         <View style={styles.header}>
           <Text style={styles.kicker}>ACADEMIC YEAR 2023-24</Text>
           <Text style={styles.h1}>Attendance Overview</Text>
@@ -74,12 +76,16 @@ export default function StudentAttendanceScreen() {
 
         <View style={[styles.card, { marginTop: CampusSpace.gutter }]}>
           <View style={[styles.rowBetween, { marginBottom: CampusSpace.md }]}>
-            <Text style={styles.h2}>October 2023</Text>
+            <Text style={styles.h2}>{months[monthIndex]}</Text>
             <View style={{ flexDirection: 'row', gap: 6 }}>
-              <Pressable style={styles.navBtn}>
+              <Pressable
+                style={styles.navBtn}
+                onPress={() => setMonthIndex((v) => (v - 1 + months.length) % months.length)}>
                 <MaterialIcons name="chevron-left" size={22} color={CampusColors.onSurfaceVariant} />
               </Pressable>
-              <Pressable style={styles.navBtn}>
+              <Pressable
+                style={styles.navBtn}
+                onPress={() => setMonthIndex((v) => (v + 1) % months.length)}>
                 <MaterialIcons name="chevron-right" size={22} color={CampusColors.onSurfaceVariant} />
               </Pressable>
             </View>
@@ -159,7 +165,7 @@ export default function StudentAttendanceScreen() {
         <View style={[styles.card, { marginTop: CampusSpace.gutter }]}>
           <View style={styles.rowBetween}>
             <Text style={styles.h2}>Subject Breakdown</Text>
-            <Pressable>
+            <Pressable onPress={() => Alert.alert('Subject Breakdown', 'Detailed report will be available soon.')}>
               <Text style={styles.link}>View Details</Text>
             </Pressable>
           </View>
@@ -245,15 +251,15 @@ function HistoryRow({
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: CampusColors.surface },
-  scroll: { paddingHorizontal: CampusSpace.lg, paddingTop: CampusSpace.lg },
+  scroll: { paddingHorizontal: CampusSpace.md, paddingTop: CampusSpace.md },
   header: { marginBottom: CampusSpace.xl },
   kicker: { ...CampusType.bodyMd, color: CampusColors.primary, fontFamily: CampusFonts.bodySemiBold, letterSpacing: 1 },
-  h1: { ...CampusType.h1, color: CampusColors.onSurface, marginTop: 6 },
-  h2: { ...CampusType.h2, color: CampusColors.onSurface },
+  h1: { ...CampusType.h2, color: CampusColors.onSurface, marginTop: 6, fontFamily: CampusFonts.headingBold },
+  h2: { ...CampusType.bodyLg, color: CampusColors.onSurface, fontFamily: CampusFonts.headingBold },
   card: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.lg,
+    padding: CampusSpace.md,
     borderWidth: 1,
     borderColor: CampusColors.surfaceContainer,
     shadowColor: '#000',
@@ -266,15 +272,15 @@ const styles = StyleSheet.create({
   rowBetween: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   smallLabel: { ...CampusType.label, color: CampusColors.onSurfaceVariant },
   circleIcon: { width: 40, height: 40, borderRadius: 20, backgroundColor: 'rgba(0, 78, 159, 0.1)', alignItems: 'center', justifyContent: 'center' },
-  stat: { ...CampusType.stat, color: CampusColors.onSurface, marginTop: 8 },
+  stat: { ...CampusType.h1, color: CampusColors.onSurface, marginTop: 8, fontFamily: CampusFonts.headingBold },
   trendRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 6 },
   trendText: { ...CampusType.caption, color: CampusColors.onTertiaryFixedVariant },
   progressTrack: { height: 8, borderRadius: 999, backgroundColor: CampusColors.surfaceContainerLow, marginTop: CampusSpace.lg, overflow: 'hidden' },
   progressFill: { height: '100%', backgroundColor: CampusColors.primary, borderRadius: 999 },
   metricRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   metricIcon: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
-  statInline: { ...CampusType.stat, fontSize: 26, lineHeight: 32, color: CampusColors.onSurface },
-  statInlineMuted: { ...CampusType.h2, fontFamily: CampusFonts.body, color: CampusColors.onSurfaceVariant },
+  statInline: { ...CampusType.h2, fontSize: 22, lineHeight: 28, color: CampusColors.onSurface, fontFamily: CampusFonts.headingBold },
+  statInlineMuted: { ...CampusType.bodyLg, fontFamily: CampusFonts.body, color: CampusColors.onSurfaceVariant },
   navBtn: { padding: 6, borderRadius: CampusRadius.sm },
   weekHeader: { flexDirection: 'row', marginBottom: 6 },
   weekHeaderText: { flex: 1, textAlign: 'center', ...CampusType.label, color: CampusColors.onSurfaceVariant },

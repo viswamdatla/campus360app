@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { StudentTopBar } from '@/components/student/StudentTopBar';
@@ -17,7 +17,7 @@ export default function StudentGradesScreen() {
       <StudentTopBar avatarUri={AVATAR} />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ padding: CampusSpace.lg, paddingBottom: insets.bottom + 110 }}>
+        contentContainerStyle={{ padding: CampusSpace.md, paddingBottom: insets.bottom + 100 }}>
         <View style={styles.summaryGrid}>
           <SummaryCard title="Cumulative GPA" value="3.82" sub="Top 5% of Department" tone="primary" />
           <SummaryCard title="Total Credits" value="94 / 120" bar={78} tone="tertiary" />
@@ -26,7 +26,7 @@ export default function StudentGradesScreen() {
 
         <View style={styles.sectionHead}>
           <Text style={styles.h2}>Academic Transcript</Text>
-          <Pressable style={styles.exportBtn}>
+          <Pressable style={styles.exportBtn} onPress={() => Alert.alert('Export PDF', 'Transcript PDF generated.')}>
             <MaterialIcons name="download" size={18} color={CampusColors.onSurfaceVariant} />
             <Text style={styles.exportText}>Export PDF</Text>
           </Pressable>
@@ -80,27 +80,27 @@ export default function StudentGradesScreen() {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: CampusColors.surface },
-  h2: { ...CampusType.h2, color: CampusColors.onSurface },
+  h2: { ...CampusType.bodyLg, color: CampusColors.onSurface, fontFamily: CampusFonts.headingBold },
   summaryGrid: { gap: CampusSpace.gutter },
-  sectionHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: CampusSpace.xl, marginBottom: CampusSpace.md },
+  sectionHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: CampusSpace.lg, marginBottom: CampusSpace.md },
   exportBtn: { flexDirection: 'row', alignItems: 'center', gap: 6, borderWidth: 1, borderColor: CampusColors.outlineVariant, borderRadius: CampusRadius.sm, paddingHorizontal: 12, paddingVertical: 8 },
   exportText: { ...CampusType.label, color: CampusColors.onSurfaceVariant },
   distributionGrid: { gap: CampusSpace.gutter, marginTop: CampusSpace.xl, marginBottom: CampusSpace.xl },
   distCard: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.lg,
+    padding: CampusSpace.md,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
     shadowRadius: 12,
     elevation: 2,
   },
-  bars: { height: 180, flexDirection: 'row', alignItems: 'flex-end', gap: 12, paddingHorizontal: 6, marginTop: CampusSpace.lg },
+  bars: { height: 160, flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: 6, marginTop: CampusSpace.md },
   donutCard: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.lg,
+    padding: CampusSpace.md,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },

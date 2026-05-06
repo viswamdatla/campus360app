@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   wrap: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     paddingHorizontal: CampusSpace.lg,
-    paddingBottom: CampusSpace.md,
+    paddingBottom: CampusSpace.sm,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: CampusColors.outlineVariant,
     shadowColor: '#000',
@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  left: { flexDirection: 'row', alignItems: 'center', gap: 12, flex: 1 },
-  avatar: { width: 40, height: 40, borderRadius: 999, backgroundColor: CampusColors.surfaceContainer },
-  brand: { fontSize: 20, lineHeight: 28, fontFamily: CampusFonts.headingBold, color: CampusColors.primary },
-  iconBtn: { width: 40, height: 40, borderRadius: 999, alignItems: 'center', justifyContent: 'center' },
+  left: { flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1 },
+  avatar: { width: 34, height: 34, borderRadius: 999, backgroundColor: CampusColors.surfaceContainer },
+  brand: { fontSize: 18, lineHeight: 24, fontFamily: CampusFonts.headingBold, color: CampusColors.primary },
+  iconBtn: { width: 34, height: 34, borderRadius: 999, alignItems: 'center', justifyContent: 'center' },
 });
 

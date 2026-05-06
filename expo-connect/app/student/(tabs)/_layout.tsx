@@ -26,12 +26,12 @@ export default function StudentTabLayout() {
         tabBarStyle: {
           backgroundColor: CampusColors.surfaceContainerLowest,
           borderTopColor: CampusColors.outlineVariant,
-          height: Platform.OS === 'ios' ? 88 : 72,
-          paddingTop: 8,
-          paddingBottom: Platform.OS === 'ios' ? 28 : 12,
+          height: Platform.OS === 'ios' ? 82 : 66,
+          paddingTop: 6,
+          paddingBottom: Platform.OS === 'ios' ? 22 : 10,
           paddingHorizontal: 6,
         },
-        tabBarLabelStyle: { fontFamily: CampusFonts.bodySemiBold, fontSize: 11 },
+        tabBarLabelStyle: { fontFamily: CampusFonts.bodySemiBold, fontSize: 10 },
         tabBarItemStyle: { borderRadius: 14 },
         tabBarButton: (props) => {
           const { onPress, onPressIn, accessibilityState, children } = props;
@@ -60,7 +60,7 @@ export default function StudentTabLayout() {
         },
         tabBarIcon: ({ color }) => {
           const name = TAB_ICONS[route.name] ?? 'circle';
-          return <MaterialIcons name={name} size={22} color={color} />;
+          return <MaterialIcons name={name} size={20} color={color} />;
         },
       })}>
       <Tabs.Screen
@@ -105,6 +105,6 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     marginHorizontal: 2,
     borderRadius: 14,
-    minHeight: 48,
+    minHeight: 42,
   },
 });

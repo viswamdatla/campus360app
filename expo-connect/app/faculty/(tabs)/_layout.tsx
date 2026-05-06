@@ -6,7 +6,7 @@ import { HapticTab } from '@/components/haptic-tab';
 import { BrandColors } from '@/constants/theme';
 
 function TabIcon({ name, color }: Readonly<{ name: keyof typeof MaterialIcons.glyphMap; color: string }>) {
-  return <MaterialIcons name={name} size={26} color={color} />;
+  return <MaterialIcons name={name} size={20} color={color} />;
 }
 
 const dashboardOptions = {
@@ -34,19 +34,19 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: BrandColors.primary,
+        tabBarActiveTintColor: BrandColors.onPrimaryContainer,
         tabBarInactiveTintColor: BrandColors.onSurfaceVariant,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarStyle: {
-          backgroundColor: BrandColors.surfaceContainer,
+          backgroundColor: BrandColors.surfaceContainerLowest,
           borderTopColor: BrandColors.outlineVariant,
-          height: 72,
+          height: 66,
           paddingBottom: 10,
-          paddingTop: 10,
+          paddingTop: 6,
         },
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 10,
           fontFamily: 'Inter_600SemiBold',
         },
       }}>

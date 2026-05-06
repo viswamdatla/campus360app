@@ -4,7 +4,7 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { CampusColors, CampusFonts, CampusSpace, CampusType } from '@/constants/theme';
+import { CampusColors, CampusFonts, ParentSpace, ParentType } from '@/constants/theme';
 
 const cardShadowHeader = {
   shadowColor: '#000',
@@ -48,8 +48,8 @@ export function AppHeader({ avatarUri = DEFAULT_AVATAR, onPressNotifications }: 
 const styles = StyleSheet.create({
   wrap: {
     backgroundColor: CampusColors.surface,
-    paddingHorizontal: CampusSpace.lg,
-    paddingBottom: 12,
+    paddingHorizontal: ParentSpace.md,
+    paddingBottom: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: CampusColors.outlineVariant,
     ...cardShadowHeader,
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
   left: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: 10,
     flex: 1,
   },
   avatarRing: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 34,
+    height: 34,
+    borderRadius: 17,
     overflow: 'hidden',
     backgroundColor: CampusColors.primaryFixed,
   },
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   title: {
-    ...CampusType.h2,
+    ...ParentType.h2,
     color: CampusColors.primary,
     fontFamily: CampusFonts.headingBold,
   },

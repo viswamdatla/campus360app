@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image } from 'expo-image';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, Alert } from 'react-native';
+import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { StudentTopBar } from '@/components/student/StudentTopBar';
@@ -8,6 +9,7 @@ import { CampusColors, CampusFonts, CampusRadius, CampusSpace, CampusType } from
 
 export default function StudentHomeScreen() {
   const insets = useSafeAreaInsets();
+  const router = useRouter();
 
   return (
     <View style={styles.screen}>
@@ -15,7 +17,7 @@ export default function StudentHomeScreen() {
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={[styles.scroll, { paddingBottom: insets.bottom + 110 }]}>
+        contentContainerStyle={[styles.scroll, { paddingBottom: insets.bottom + 100 }]}>
         <View style={styles.header}>
           <Text style={styles.h1}>Academic Overview</Text>
           <Text style={styles.sub}>Spring Semester 2024</Text>
@@ -57,7 +59,9 @@ export default function StudentHomeScreen() {
         <View style={styles.card}>
           <View style={styles.rowBetween}>
             <Text style={styles.h2}>Today's Schedule</Text>
-            <Text style={styles.link}>View Calendar</Text>
+            <Pressable onPress={() => router.push('/student/schedule')}>
+              <Text style={styles.link}>View Calendar</Text>
+            </Pressable>
           </View>
 
           <View style={styles.timeline}>
@@ -76,14 +80,14 @@ export default function StudentHomeScreen() {
           </View>
         </View>
 
-        <View style={styles.photoCard}>
+        <Pressable style={styles.photoCard} onPress={() => Alert.alert('Campus Life', 'Library hours extended for finals week.')}>
           <Image source={{ uri: CAMPUS_IMG }} style={styles.photoBg} contentFit="cover" />
           <View style={styles.photoOverlay} />
           <View style={styles.photoText}>
             <Text style={styles.photoTitle}>Campus Life</Text>
             <Text style={styles.photoSub}>Library hours extended for finals week. Study hard, Alex!</Text>
           </View>
-        </View>
+        </Pressable>
       </ScrollView>
     </View>
   );
@@ -159,15 +163,15 @@ const CAMPUS_IMG =
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: CampusColors.surface },
-  scroll: { paddingHorizontal: CampusSpace.lg, paddingTop: CampusSpace.lg },
+  scroll: { paddingHorizontal: CampusSpace.md, paddingTop: CampusSpace.md },
   header: { marginBottom: CampusSpace.gutter },
-  h1: { ...CampusType.h1, color: CampusColors.onSurface },
-  h2: { ...CampusType.h2, color: CampusColors.onSurface },
+  h1: { ...CampusType.h2, color: CampusColors.onSurface, fontFamily: CampusFonts.headingBold },
+  h2: { ...CampusType.bodyLg, color: CampusColors.onSurface, fontFamily: CampusFonts.headingBold },
   sub: { ...CampusType.bodyMd, color: CampusColors.onSurfaceVariant, marginTop: 4 },
   card: {
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.lg,
+    padding: CampusSpace.md,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
@@ -182,20 +186,20 @@ const styles = StyleSheet.create({
   pillOkText: { ...CampusType.label, fontSize: 11, color: '#166534' },
   bodyMuted: { ...CampusType.bodyMd, color: CampusColors.onSurfaceVariant, marginTop: 10 },
   valueRow: { flexDirection: 'row', alignItems: 'baseline', gap: 8, marginTop: 6 },
-  stat: { ...CampusType.stat, color: CampusColors.onSurface },
+  stat: { ...CampusType.h1, color: CampusColors.onSurface, fontFamily: CampusFonts.headingBold },
   delta: { ...CampusType.label, color: '#16a34a' },
   progressTrack: { height: 8, borderRadius: 999, backgroundColor: CampusColors.surfaceContainerHigh, marginTop: CampusSpace.lg, overflow: 'hidden' },
   progressFill: { height: '100%', backgroundColor: CampusColors.primary, borderRadius: 999 },
   caption: { ...CampusType.caption, color: CampusColors.onSurfaceVariant },
-  gpa: { ...CampusType.h1, color: CampusColors.primary },
+  gpa: { ...CampusType.h2, color: CampusColors.primary, fontFamily: CampusFonts.headingBold },
   gradeRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: 12 },
   gradeBorder: { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: CampusColors.outlineVariant },
   gradeLeft: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   gradeIcon: { width: 40, height: 40, borderRadius: CampusRadius.sm, backgroundColor: CampusColors.surfaceContainer, alignItems: 'center', justifyContent: 'center' },
   gradeIconText: { fontFamily: CampusFonts.bodyBold, color: CampusColors.onSurfaceVariant, fontSize: 12 },
-  gradeTitle: { ...CampusType.bodyLg, color: CampusColors.onSurface },
+  gradeTitle: { ...CampusType.bodyMd, color: CampusColors.onSurface, fontFamily: CampusFonts.bodySemiBold },
   gradeSub: { ...CampusType.caption, color: CampusColors.onSurfaceVariant, marginTop: 2 },
-  gradeMark: { ...CampusType.h2, color: CampusColors.primary },
+  gradeMark: { ...CampusType.bodyLg, color: CampusColors.primary, fontFamily: CampusFonts.headingBold },
   link: { ...CampusType.label, color: CampusColors.primary },
   timeline: { marginTop: CampusSpace.md, paddingLeft: 22 },
   tItem: { flexDirection: 'row', gap: 10, marginTop: 16 },
@@ -204,11 +208,11 @@ const styles = StyleSheet.create({
   tCard: { flex: 1, borderRadius: CampusRadius.sm, padding: CampusSpace.md, flexDirection: 'row', justifyContent: 'space-between', gap: 10 },
   tCardActive: { backgroundColor: CampusColors.surfaceContainerLow },
   tCardMuted: { borderWidth: 1, borderColor: CampusColors.outlineVariant, backgroundColor: CampusColors.surfaceContainerLowest },
-  tTitle: { ...CampusType.bodyLg, color: CampusColors.onSurface },
+  tTitle: { ...CampusType.bodyMd, color: CampusColors.onSurface, fontFamily: CampusFonts.bodySemiBold },
   tSub: { ...CampusType.caption, color: CampusColors.onSurfaceVariant, marginTop: 4 },
   timeRow: { justifyContent: 'center' },
   timeText: { ...CampusType.label, fontFamily: CampusFonts.bodyBold },
-  photoCard: { borderRadius: CampusRadius.md, overflow: 'hidden', minHeight: 200, marginBottom: CampusSpace.xl },
+  photoCard: { borderRadius: CampusRadius.md, overflow: 'hidden', minHeight: 150, marginBottom: CampusSpace.xl },
   photoBg: { ...StyleSheet.absoluteFillObject },
   photoOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0, 78, 159, 0.55)' },
   photoText: { padding: CampusSpace.lg, position: 'absolute', left: 0, right: 0, bottom: 0 },

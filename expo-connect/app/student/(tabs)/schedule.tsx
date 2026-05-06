@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, Alert } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { StudentTopBar } from '@/components/student/StudentTopBar';
@@ -8,35 +8,36 @@ import { CampusColors, CampusFonts, CampusRadius, CampusSpace, CampusType } from
 
 export default function StudentScheduleScreen() {
   const insets = useSafeAreaInsets();
+  const [selectedDay, setSelectedDay] = React.useState('MON');
 
   return (
     <View style={styles.screen}>
       <StudentTopBar avatarUri={AVATAR} />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ padding: CampusSpace.lg, paddingBottom: insets.bottom + 110 }}>
+        contentContainerStyle={{ padding: CampusSpace.md, paddingBottom: insets.bottom + 100 }}>
         <View style={styles.header}>
           <Text style={styles.h1}>Weekly Timetable</Text>
           <Text style={styles.sub}>Winter Semester • Week 08</Text>
         </View>
 
         <View style={styles.actions}>
-          <Pressable style={styles.grayBtn}>
+          <Pressable style={styles.grayBtn} onPress={() => Alert.alert('Filter', 'Filter options coming soon.')}>
             <MaterialIcons name="filter-list" size={18} color={CampusColors.onSurfaceVariant} />
             <Text style={styles.grayBtnText}>Filter</Text>
           </Pressable>
-          <Pressable style={styles.primaryBtn}>
+          <Pressable style={styles.primaryBtn} onPress={() => Alert.alert('Export PDF', 'Your schedule PDF is being generated.')}>
             <MaterialIcons name="print" size={18} color={CampusColors.onPrimary} />
             <Text style={styles.primaryBtnText}>Export PDF</Text>
           </Pressable>
         </View>
 
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.dayStrip}>
-          <DayPill day="MON" date="12" active />
-          <DayPill day="TUE" date="13" />
-          <DayPill day="WED" date="14" outlined />
-          <DayPill day="THU" date="15" />
-          <DayPill day="FRI" date="16" />
+          <DayPill day="MON" date="12" active={selectedDay === 'MON'} onPress={() => setSelectedDay('MON')} />
+          <DayPill day="TUE" date="13" active={selectedDay === 'TUE'} onPress={() => setSelectedDay('TUE')} />
+          <DayPill day="WED" date="14" outlined={selectedDay === 'WED'} active={selectedDay === 'WED'} onPress={() => setSelectedDay('WED')} />
+          <DayPill day="THU" date="15" active={selectedDay === 'THU'} onPress={() => setSelectedDay('THU')} />
+          <DayPill day="FRI" date="16" active={selectedDay === 'FRI'} onPress={() => setSelectedDay('FRI')} />
         </ScrollView>
 
         <View style={{ gap: 14 }}>
@@ -108,11 +109,24 @@ export default function StudentScheduleScreen() {
 const AVATAR =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuAeBF3M2LojApyfMgyHY0NM2xzrp67QNo75hwyc9MZ0KxfNQo6VQy2zfLlAtKqOPS_clwNLTbGvEObg7BfL9wMjSicc44_aUE5nQNjuhogzZ_2-Cutd7CTMAUqdQEfbU3qkckGseNiZyFqG30l25h7yreQfE-INR54KS2o8XR4zFXmDv3YWhUp65pJsgDiz4z6CZrkg_84VBmcntWgBUcUiNfm1i2wbQOeaRqyDNmJMpoZ-mBpoAvTfLosd6Z0V85LCC-7X2YpcgC8';
 
-function DayPill({ day, date, active, outlined }: { day: string; date: string; active?: boolean; outlined?: boolean }) {
+function DayPill({
+  day,
+  date,
+  active,
+  outlined,
+  onPress,
+}: {
+  day: string;
+  date: string;
+  active?: boolean;
+  outlined?: boolean;
+  onPress?: () => void;
+}) {
   const bg = active ? CampusColors.primaryContainer : CampusColors.surfaceContainerLowest;
   const fg = active ? CampusColors.onPrimaryContainer : outlined ? CampusColors.primary : CampusColors.onSurfaceVariant;
   return (
-    <View
+    <Pressable
+      onPress={onPress}
       style={[
         styles.dayPill,
         { backgroundColor: bg },
@@ -121,7 +135,7 @@ function DayPill({ day, date, active, outlined }: { day: string; date: string; a
       ]}>
       <Text style={[styles.daySmall, { color: fg, opacity: active ? 0.8 : outlined ? 1 : 0.6 }]}>{day}</Text>
       <Text style={[styles.dayBig, { color: fg }]}>{date}</Text>
-    </View>
+    </Pressable>
   );
 }
 
@@ -208,16 +222,16 @@ function DeadlineRow({
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: CampusColors.surface },
   header: { marginBottom: CampusSpace.md },
-  h1: { ...CampusType.h1, color: CampusColors.onSurface },
-  h2: { ...CampusType.h2, color: CampusColors.onSurface, marginTop: CampusSpace.md },
+  h1: { ...CampusType.h2, color: CampusColors.onSurface, fontFamily: CampusFonts.headingBold },
+  h2: { ...CampusType.bodyLg, color: CampusColors.onSurface, marginTop: CampusSpace.md, fontFamily: CampusFonts.headingBold },
   sub: { ...CampusType.bodyMd, color: CampusColors.onSurfaceVariant, marginTop: 4 },
   actions: { flexDirection: 'row', gap: 10, marginTop: CampusSpace.md, marginBottom: CampusSpace.md },
-  grayBtn: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: CampusColors.surfaceContainerHighest, paddingHorizontal: 14, paddingVertical: 10, borderRadius: CampusRadius.sm },
+  grayBtn: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: CampusColors.surfaceContainerHighest, paddingHorizontal: 12, paddingVertical: 8, borderRadius: CampusRadius.sm },
   grayBtnText: { ...CampusType.label, color: CampusColors.onSurfaceVariant },
-  primaryBtn: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: CampusColors.primary, paddingHorizontal: 14, paddingVertical: 10, borderRadius: CampusRadius.sm },
+  primaryBtn: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: CampusColors.primary, paddingHorizontal: 12, paddingVertical: 8, borderRadius: CampusRadius.sm },
   primaryBtnText: { ...CampusType.label, color: CampusColors.onPrimary },
   dayStrip: { gap: 10, paddingVertical: 10 },
-  dayPill: { width: 70, paddingVertical: 10, borderRadius: CampusRadius.md, alignItems: 'center' },
+  dayPill: { width: 64, paddingVertical: 8, borderRadius: CampusRadius.md, alignItems: 'center' },
   daySmall: { ...CampusType.label },
   dayBig: { ...CampusType.h2 },
   timeRow: { flexDirection: 'row', gap: 12 },
@@ -228,7 +242,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: CampusColors.surfaceContainerLowest,
     borderRadius: CampusRadius.md,
-    padding: CampusSpace.lg,
+    padding: CampusSpace.md,
     borderLeftWidth: 4,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -237,7 +251,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   rowBetween: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 },
-  cardTitle: { ...CampusType.h2, color: CampusColors.onSurface, flex: 1 },
+  cardTitle: { ...CampusType.bodyLg, color: CampusColors.onSurface, flex: 1, fontFamily: CampusFonts.headingBold },
   tagPill: { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 999 },
   tagText: { ...CampusType.label },
   metaRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 10 },

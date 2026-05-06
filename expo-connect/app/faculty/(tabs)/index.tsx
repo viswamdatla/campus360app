@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BrandColors, Radius, Spacing, Typography } from '@/constants/theme';
 
@@ -75,11 +76,13 @@ function NotificationRow({
 }
 
 export default function DashboardScreen() {
+  const insets = useSafeAreaInsets();
+
   return (
     <View style={styles.root}>
-      <View style={styles.topbar}>
+      <View style={[styles.topbar, { paddingTop: Math.max(insets.top, 10) }]}>
         <View style={styles.topLeft}>
-          <MaterialIcons name="school" size={26} color={BrandColors.primary} />
+          <MaterialIcons name="school" size={22} color={BrandColors.primary} />
           <Text style={styles.topTitle}>Faculty Portal</Text>
         </View>
 
@@ -195,9 +198,10 @@ const styles = StyleSheet.create({
     backgroundColor: BrandColors.surface,
   },
   topbar: {
-    height: 64,
+    minHeight: 56,
     paddingHorizontal: Spacing.container,
-    backgroundColor: BrandColors.surfaceContainer,
+    paddingBottom: Spacing.sm,
+    backgroundColor: BrandColors.surfaceContainerLowest,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -205,18 +209,18 @@ const styles = StyleSheet.create({
     borderBottomColor: BrandColors.outlineVariant,
   },
   topLeft: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  topTitle: { ...Typography.h1, color: BrandColors.primary },
+  topTitle: { fontSize: 18, lineHeight: 24, fontFamily: 'WorkSans_700Bold', color: BrandColors.primary },
   topRight: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   iconBtn: {
-    width: 40,
-    height: 40,
+    width: 34,
+    height: 34,
     borderRadius: Radius.full,
     alignItems: 'center',
     justifyContent: 'center',
   },
   avatar: {
-    width: 40,
-    height: 40,
+    width: 34,
+    height: 34,
     borderRadius: Radius.full,
     borderWidth: 2,
     borderColor: BrandColors.primaryContainer,
@@ -225,7 +229,7 @@ const styles = StyleSheet.create({
     padding: Spacing.container,
     paddingBottom: 120,
   },
-  hero: { marginBottom: Spacing.xl },
+  hero: { marginBottom: Spacing.lg },
   h1: { ...Typography.h1, color: BrandColors.onSurface },
   heroSub: { ...Typography.bodyLg, color: BrandColors.onSurfaceVariant, marginTop: 6 },
   h2: { ...Typography.h2, color: BrandColors.onSurface },
@@ -236,7 +240,7 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.md,
   },
   link: { ...Typography.labelSm, color: BrandColors.primary },
-  cardGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.md },
+  cardGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.sm },
   classCard: {
     width: '100%',
     backgroundColor: BrandColors.surfaceContainerLowest,
@@ -260,15 +264,15 @@ const styles = StyleSheet.create({
   pillTextPrimary: { color: BrandColors.onPrimaryFixedVariant },
   pillTextSecondary: { color: BrandColors.onSecondaryFixedVariant },
   cardTitle: { ...Typography.h2, color: BrandColors.onSurface, marginBottom: 6 },
-  metaRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 6 },
+  metaRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 4 },
   metaText: { ...Typography.bodyMd, color: BrandColors.onSurfaceVariant },
   attnBanner: {
     marginTop: Spacing.lg,
     backgroundColor: BrandColors.primary,
-    borderRadius: 24,
-    padding: Spacing.xl,
+    borderRadius: Radius.md,
+    padding: Spacing.md,
     flexDirection: 'row',
-    gap: Spacing.lg,
+    gap: Spacing.md,
     alignItems: 'center',
     justifyContent: 'space-between',
     overflow: 'hidden',
@@ -292,7 +296,7 @@ const styles = StyleSheet.create({
     padding: Spacing.xl,
     alignItems: 'center',
   },
-  attnPct: { fontSize: 48, color: BrandColors.onPrimary, fontFamily: 'WorkSans_800ExtraBold' },
+  attnPct: { fontSize: 40, color: BrandColors.onPrimary, fontFamily: 'WorkSans_800ExtraBold' },
   attnLabel: { ...Typography.labelSm, color: BrandColors.onPrimary, opacity: 0.95, letterSpacing: 1 },
   actions: { gap: Spacing.sm, marginTop: Spacing.md },
   actionPrimary: {
@@ -329,7 +333,7 @@ const styles = StyleSheet.create({
   notifCard: {
     marginTop: Spacing.lg,
     backgroundColor: BrandColors.surfaceContainerLowest,
-    borderRadius: 24,
+    borderRadius: Radius.md,
     padding: Spacing.gutter,
     borderWidth: 1,
     borderColor: 'rgba(193,198,213,0.3)',

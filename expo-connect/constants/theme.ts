@@ -81,6 +81,31 @@ export const CampusSpace = {
   xl: 32,
 } as const;
 
+/** Compact scale for parent module (aligned with student visual density). */
+export const ParentType = {
+  h1: { fontSize: 20, lineHeight: 28, fontFamily: CampusFonts.headingSemi },
+  h2: { fontSize: 16, lineHeight: 22, fontFamily: CampusFonts.headingSemi },
+  stat: { fontSize: 24, lineHeight: 30, fontFamily: CampusFonts.headingBold },
+  bodyLg: { fontSize: 14, lineHeight: 20, fontFamily: CampusFonts.bodyMedium },
+  bodyMd: { fontSize: 13, lineHeight: 18, fontFamily: CampusFonts.body },
+  label: {
+    fontSize: 11,
+    lineHeight: 14,
+    fontFamily: CampusFonts.bodySemiBold,
+    letterSpacing: 0.2,
+  },
+  caption: { fontSize: 11, lineHeight: 14, fontFamily: CampusFonts.body },
+} as const;
+
+export const ParentSpace = {
+  xs: 6,
+  sm: 10,
+  md: 14,
+  gutter: 16,
+  lg: 18,
+  xl: 24,
+} as const;
+
 export const CampusRadius = {
   sm: 8,
   md: 12,
@@ -106,13 +131,13 @@ export const BrandColors = {
 } as const;
 
 export const Spacing = {
-  xs: 8,
-  sm: 12,
-  md: 16,
-  lg: 24,
-  xl: 32,
-  gutter: 20,
-  container: 24,
+  xs: 6,
+  sm: 10,
+  md: 14,
+  lg: 18,
+  xl: 24,
+  gutter: 16,
+  container: 16,
 } as const;
 
 export const Radius = {
@@ -129,13 +154,13 @@ export const Typography = {
   fontHeading: 'WorkSans_700Bold',
   fontHeadingSemi: 'WorkSans_600SemiBold',
 
-  h1: { fontSize: 24, lineHeight: 32, fontFamily: 'WorkSans_700Bold' },
-  h2: { fontSize: 20, lineHeight: 28, fontFamily: 'WorkSans_600SemiBold' },
-  bodyLg: { fontSize: 16, lineHeight: 24, fontFamily: 'Inter_500Medium' },
-  bodyMd: { fontSize: 14, lineHeight: 20, fontFamily: 'Inter_400Regular' },
-  caption: { fontSize: 12, lineHeight: 16, fontFamily: 'Inter_400Regular' },
-  labelSm: { fontSize: 12, lineHeight: 16, fontFamily: 'Inter_600SemiBold' },
-  stat: { fontSize: 28, lineHeight: 34, fontFamily: 'WorkSans_700Bold' },
+  h1: { fontSize: 20, lineHeight: 28, fontFamily: 'WorkSans_700Bold' },
+  h2: { fontSize: 16, lineHeight: 22, fontFamily: 'WorkSans_600SemiBold' },
+  bodyLg: { fontSize: 14, lineHeight: 20, fontFamily: 'Inter_500Medium' },
+  bodyMd: { fontSize: 13, lineHeight: 18, fontFamily: 'Inter_400Regular' },
+  caption: { fontSize: 11, lineHeight: 14, fontFamily: 'Inter_400Regular' },
+  labelSm: { fontSize: 11, lineHeight: 14, fontFamily: 'Inter_600SemiBold' },
+  stat: { fontSize: 24, lineHeight: 30, fontFamily: 'WorkSans_700Bold' },
 } as const;
 
 export const Colors = {
