@@ -1,0 +1,90 @@
+:root {
+  /* Colors (from your Tailwind config) */
+  --surface-container-high: #e6e8f1;
+  --surface-variant: #e1e2eb;
+  --on-tertiary-container: #ffe3d6;
+  --inverse-primary: #aac7ff;
+  --on-primary-container: #dfe8ff;
+  --primary-fixed-dim: #aac7ff;
+  --on-secondary-fixed: #1c1b1b;
+  --on-primary-fixed: #001b3e;
+  --on-secondary: #ffffff;
+  --surface-container: #ecedf6;
+  --on-background: #191c22;
+  --outline-variant: #c1c6d5;
+  --on-tertiary-fixed-variant: #793000;
+  --error-container: #ffdad6;
+  --tertiary-container: #af4900;
+  --error: #ba1a1a;
+  --surface-container-low: #f2f3fc;
+  --on-surface-variant: #414753;
+  --tertiary-fixed-dim: #ffb692;
+  --on-secondary-container: #636262;
+  --surface-dim: #d8d9e2;
+  --outline: #727784;
+  --surface-container-lowest: #ffffff;
+  --secondary-fixed: #e5e2e1;
+  --inverse-surface: #2e3037;
+  --secondary: #5f5e5e;
+  --on-primary: #ffffff;
+  --tertiary: #883700;
+  --primary-fixed: #d7e3ff;
+  --primary: #004e9f;
+  --surface: #f9f9ff;
+  --secondary-fixed-dim: #c8c6c5;
+  --on-error-container: #93000a;
+  --on-tertiary-fixed: #341100;
+  --on-surface: #191c22;
+  --inverse-on-surface: #eff0f9;
+  --background: #f9f9ff;
+  --surface-tint: #005cba;
+  --primary-container: #0066cc;
+  --surface-bright: #f9f9ff;
+  --on-tertiary: #ffffff;
+  --on-primary-fixed-variant: #00458e;
+  --tertiary-fixed: #ffdbcb;
+  --secondary-container: #e2dfde;
+  --surface-container-highest: #e1e2eb;
+  --on-secondary-fixed-variant: #474746;
+  --on-error: #ffffff;
+
+  /* Typography */
+  --font-body: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-heading: "Work Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  /* Font sizes */
+  --fs-caption: 12px;
+  --lh-caption: 16px;
+  --fs-label-sm: 12px;
+  --lh-label-sm: 16px;
+  --fs-body-md: 14px;
+  --lh-body-md: 20px;
+  --fs-body-lg: 16px;
+  --lh-body-lg: 24px;
+  --fs-h2: 20px;
+  --lh-h2: 28px;
+  --fs-h1: 24px;
+  --lh-h1: 32px;
+  --fs-stat: 28px;
+  --lh-stat: 34px;
+
+  /* Spacing */
+  --sp-base: 4px;
+  --sp-xs: 8px;
+  --sp-sm: 12px;
+  --sp-md: 16px;
+  --sp-lg: 24px;
+  --sp-xl: 32px;
+  --sp-gutter: 20px;
+  --sp-container-margin: 24px;
+
+  /* Radius */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-full: 9999px;
+
+  /* Effects */
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+

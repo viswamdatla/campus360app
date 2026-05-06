@@ -1,0 +1,25 @@
+.shell {
+  min-height: 100dvh;
+}
+
+.content {
+  padding: 88px var(--sp-container-margin) 92px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Desktop: reserve sidebar width */
+@media (min-width: 768px) {
+  .content {
+    margin-left: 260px;
+    max-width: none;
+  }
+}
+
+/* Desktop: no mobile bottom nav padding */
+@media (min-width: 768px) {
+  .content {
+    padding-bottom: var(--sp-lg);
+  }
+}
+
